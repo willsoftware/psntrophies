@@ -1,3 +1,4 @@
+#!/bin/env node
 /*!
 *
 * Gumer Playstation Network API
