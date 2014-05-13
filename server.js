@@ -9,6 +9,14 @@ var idregex = /[A-Za-z0-9].{2,15}/; // A simple regex for PSN id's // TODO: Make
 var ipaddr  = process.env.OPENSHIFT_NODEJS_IP || "127.0.0.1";
 var port    = process.env.OPENSHIFT_NODEJS_PORT || 8080;
 
+gumerPSN.init({		// Our PSN Module, we have to start it once. - irkinsander
+	debug:		true				// Let's set it true, it's still in early development. So, report everything that goes wrong please.
+	,email:		"willsoftware@outlook.com"		// A valid PSN/SCE account (can be new one) // TODO: Using the user's credentials to do this.
+	,password:	"#PSNTrophies"		// Account's password, du'h
+	,npLanguage:	"en"			// The language the trophy's name and description will shown as
+	,region: 		"us"			// The server region that will push data
+});
+
 // Taken from Express site, this takes /{{id}}/ parameter
 app.param(function(name, fn){	
 	if (fn instanceof RegExp) {
