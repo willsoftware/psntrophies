@@ -24,8 +24,8 @@ console.log('Starting gPSN');
 
 gumerPSN.init({		// Our PSN Module, we have to start it once. - irkinsander
 	debug:		true				// Let's set it true, it's still in early development. So, report everything that goes wrong please.
-	,email:		"{{username}}"		// A valid PSN/SCE account (can be new one) // TODO: Using the user's credentials to do this.
-	,password:	"{{password}}"		// Account's password, du'h
+	,email:		"willsoftware@outlook.com"		// A valid PSN/SCE account (can be new one) // TODO: Using the user's credentials to do this.
+	,password:	"#PSNTrophies"		// Account's password, du'h
 	,npLanguage:	"en"			// The language the trophy's name and description will shown as
 	,region: 		"us"			// The server region that will push data
 });
