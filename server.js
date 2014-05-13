@@ -31,3 +31,142 @@ http.createServer(function (req, res) {
   res.end("Your IP address seems to be " + addr + "\n");
 }).listen(port, ipaddr);
 console.log("Server running at http://" + ipaddr + ":" + port + "/");
+
+// Taken from Express site, this takes /{{id}}/ parameter
+app.param(function(name, fn){	
+	if (fn instanceof RegExp) {
+		return function(req, res, next, val){
+			var captures;
+			if (captures = fn.exec(String(val))) {
+				req.params[name] = captures;
+				next();
+			} 
+			else {
+				next('route');
+			}
+		}
+	}
+});
+
+// Gets the ID owner's profile information and returns the JSON object.
+app.get('/PSN/:id', function(req, res){ 
+	gumerPSN.getProfile(req.params.id, function(error, profileData) {
+		if (!error) {
+			res.send(profileData)
+		}
+		else {
+			if (profileData.error.code == 2105356) {	// User not found code
+				res.send({
+					error: true, message: "PSN ID not found"
+				})
+			}
+			else {
+				res.send({
+					error: true, message: "Something went terribly wrong, submit an issue on GitHub please!", response: profileData
+				})
+			}
+		}
+	})
+})
+// Gets the ID owner's trophy (first 100) information and returns the JSON object.
+app.get('/PSN/:id/trophies', function(req, res){ 
+	gumerPSN.getTrophies(req.params.id, "m", 0, 100, function(error, trophyData) {
+		if (!error) {
+			res.send(trophyData)
+		}
+		else {
+			if (trophyData.error.code == 2105356) {		// User not found code
+				res.send({
+					error: true, message: "PSN ID not found"
+				})
+			}
+			else {
+				res.send({
+					error: true, message: "Something went terribly wrong, submit an issue on GitHub please!", response: trophyData
+				})
+			}
+		}
+	})
+})
+// Gets the ID owner's trophies for the given game title including all DLC's
+app.get('/PSN/:id/trophies/:npCommID', function(req, res){ 
+	gumerPSN.getGameTrophies(req.params.id, req.params.npCommID, '', function(error, trophyData) {
+		if (!error) {
+			res.send(trophyData)
+		}
+		else {
+			if (trophyData.error.code == 2105356) {		// User not found code
+				res.send({
+					error: true, message: "PSN ID not found"
+				})
+			}
+			else {
+				res.send({
+					error: true, message: "Something went terribly wrong, submit an issue on GitHub please!", response: trophyData
+				})
+			}
+		}
+	})
+})
+// Gets the ID owner's trophies for the given game title including all DLC's
+app.get('/PSN/:id/trophies/:npCommID/groups', function(req, res){ 
+	gumerPSN.getGameTrophyGroups(req.params.id, req.params.npCommID, function(error, trophyData) {
+		if (!error) {
+			res.send(trophyData)
+		}
+		else {
+			if (trophyData.error.code == 2105356) {		// User not found code
+				res.send({
+					error: true, message: "PSN ID not found"
+				})
+			}
+			else {
+				res.send({
+					error: true, message: "Something went terribly wrong, submit an issue on GitHub please!", response: trophyData
+				})
+			}
+		}
+	})
+})
+// Gets the ID owner's trophies for the given game title for the given group (DLC)
+app.get('/PSN/:id/trophies/:npCommID/groups/:groupID', function(req, res){ 
+	gumerPSN.getGameTrophies(req.params.id, req.params.npCommID, req.params.groupID, function(error, trophyData) {
+		if (!error) {
+			res.send(trophyData)
+		}
+		else {
+			if (trophyData.error.code == 2105356) {		// User not found code
+				res.send({
+					error: true, message: "PSN ID not found"
+				})
+			}
+			else {
+				res.send({
+					error: true, message: "Something went terribly wrong, submit an issue on GitHub please!", response: trophyData
+				})
+			}
+		}
+	})
+})
+// Gets the info for the given DLC or game's default trophy
+app.get('/PSN/:id/trophies/:npCommID/:trophyID', function(req, res){ 
+	gumerPSN.getTrophy(req.params.id, req.params.npCommID, '', req.params.trophyID, function(error, trophyData) {
+		if (!error) {
+			res.send(trophyData)
+		}
+		else {
+			if (trophyData.error.code == 2105356) {		// User not found code
+				res.send({
+					error: true, message: "PSN ID not found"
+				})
+			}
+			else {
+				res.send({
+					error: true, message: "Something went terribly wrong, submit an issue on GitHub please!", response: trophyData
+				})
+			}
+		}
+	})
+})
+// We listen in the port 3000
+app.listen(port, ipaddr); 
