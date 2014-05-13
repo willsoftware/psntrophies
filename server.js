@@ -57,7 +57,7 @@ app.get('/PSN/:id', function(req, res){
 })
 // Gets the ID owner's trophy (first 100) information and returns the JSON object.
 app.get('/PSN/:id/trophies', function(req, res){ 
-	/*gumerPSN.getTrophies(req.params.id, "m", 0, 100, function(error, trophyData) {
+	gumerPSN.getTrophies(req.params.id, "m", 0, 100, function(error, trophyData) {
 		if (!error) {
 			res.send(trophyData)
 		}
@@ -73,13 +73,13 @@ app.get('/PSN/:id/trophies', function(req, res){
 				})
 			}
 		}
-	})*/
-	res.writeHead(200, {'Content-Type': 'text/plain'});
-  	res.end("getTrophies OK\n");
+	})
+	//res.writeHead(200, {'Content-Type': 'text/plain'});
+  	//res.end("getTrophies OK\n");
 })
 // Gets the ID owner's trophies for the given game title including all DLC's
 app.get('/PSN/:id/trophies/:npCommID', function(req, res){ 
-	/*gumerPSN.getGameTrophies(req.params.id, req.params.npCommID, '', function(error, trophyData) {
+	gumerPSN.getGameTrophies(req.params.id, req.params.npCommID, '', function(error, trophyData) {
 		if (!error) {
 			res.send(trophyData)
 		}
@@ -95,13 +95,13 @@ app.get('/PSN/:id/trophies/:npCommID', function(req, res){
 				})
 			}
 		}
-	})*/
-	res.writeHead(200, {'Content-Type': 'text/plain'});
-  	res.end("getGameTrophies OK\n");
+	})
+	//res.writeHead(200, {'Content-Type': 'text/plain'});
+  	//res.end("getGameTrophies OK\n");
 })
 // Gets the ID owner's trophies for the given game title including all DLC's
 app.get('/PSN/:id/trophies/:npCommID/groups', function(req, res){ 
-	/*gumerPSN.getGameTrophyGroups(req.params.id, req.params.npCommID, function(error, trophyData) {
+	gumerPSN.getGameTrophyGroups(req.params.id, req.params.npCommID, function(error, trophyData) {
 		if (!error) {
 			res.send(trophyData)
 		}
@@ -117,13 +117,13 @@ app.get('/PSN/:id/trophies/:npCommID/groups', function(req, res){
 				})
 			}
 		}
-	})*/
-	res.writeHead(200, {'Content-Type': 'text/plain'});
-  	res.end("getGameTrophyGroups OK\n");
+	})
+	//res.writeHead(200, {'Content-Type': 'text/plain'});
+  	//res.end("getGameTrophyGroups OK\n");
 })
 // Gets the ID owner's trophies for the given game title for the given group (DLC)
 app.get('/PSN/:id/trophies/:npCommID/groups/:groupID', function(req, res){ 
-	/*gumerPSN.getGameTrophies(req.params.id, req.params.npCommID, req.params.groupID, function(error, trophyData) {
+	gumerPSN.getGameTrophies(req.params.id, req.params.npCommID, req.params.groupID, function(error, trophyData) {
 		if (!error) {
 			res.send(trophyData)
 		}
@@ -139,13 +139,13 @@ app.get('/PSN/:id/trophies/:npCommID/groups/:groupID', function(req, res){
 				})
 			}
 		}
-	})*/
-	res.writeHead(200, {'Content-Type': 'text/plain'});
-  	res.end("getGameTrophies OK\n");
+	})
+	//res.writeHead(200, {'Content-Type': 'text/plain'});
+  	//res.end("getGameTrophies OK\n");
 })
 // Gets the info for the given DLC or game's default trophy
 app.get('/PSN/:id/trophies/:npCommID/:trophyID', function(req, res){ 
-	/*gumerPSN.getTrophy(req.params.id, req.params.npCommID, '', req.params.trophyID, function(error, trophyData) {
+	gumerPSN.getTrophy(req.params.id, req.params.npCommID, '', req.params.trophyID, function(error, trophyData) {
 		if (!error) {
 			res.send(trophyData)
 		}
@@ -161,9 +161,9 @@ app.get('/PSN/:id/trophies/:npCommID/:trophyID', function(req, res){
 				})
 			}
 		}
-	})*/
-	res.writeHead(200, {'Content-Type': 'text/plain'});
-  	res.end("getTrophy OK\n");
+	})
+	//res.writeHead(200, {'Content-Type': 'text/plain'});
+  	//res.end("getTrophy OK\n");
 })
 // We listen in the port 3000
 app.listen(port, ipaddr); 
