@@ -1,6 +1,9 @@
 #!/bin/env node
 //  OpenShift sample Node application
 var http = require('http');
+var express = require('express'); // Express
+var app = express(); // Express application instance
+var idregex = /[A-Za-z0-9].{2,15}/; // A simple regex for PSN id's // TODO: Make it more accurate and fancy
 
 //Get the environment variables we need.
 var ipaddr  = process.env.OPENSHIFT_NODEJS_IP || "127.0.0.1";
