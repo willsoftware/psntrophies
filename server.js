@@ -35,7 +35,7 @@ app.param(function(name, fn){
 
 // Gets the ID owner's profile information and returns the JSON object.
 app.get('/PSN/:id', function(req, res){ 
-	/*gumerPSN.getProfile(req.params.id, function(error, profileData) {
+	gumerPSN.getProfile(req.params.id, function(error, profileData) {
 		if (!error) {
 			res.send(profileData)
 		}
@@ -51,9 +51,9 @@ app.get('/PSN/:id', function(req, res){
 				})
 			}
 		}
-	})*/
-	res.writeHead(200, {'Content-Type': 'text/plain'});
-  	res.end("getProfile OK\n");
+	})
+	//res.writeHead(200, {'Content-Type': 'text/plain'});
+  	//res.end("getProfile OK\n");
 })
 // Gets the ID owner's trophy (first 100) information and returns the JSON object.
 app.get('/PSN/:id/trophies', function(req, res){ 
