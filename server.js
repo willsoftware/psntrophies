@@ -6,13 +6,6 @@ var http = require('http');
 var ipaddr  = process.env.OPENSHIFT_NODEJS_IP || "127.0.0.1";
 var port    = process.env.OPENSHIFT_NODEJS_PORT || 8080;
 
-var 
-	 gumerPSN 	= require('./psn')		// Gumer Playstation module
-	,express 	= require('express')	// Express
-	,app 		= express()				// Express application instance
-	,idregex 	= /[A-Za-z0-9].{2,15}/ 	// A simple regex for PSN id's // TODO: Make it more accurate and fancy
-;
-
 http.createServer(function (req, res) {
 	var addr = "unknown";
 	var out = "";
