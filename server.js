@@ -1,6 +1,6 @@
 #!/bin/env node
 
-var gumerPSN = require('./psn'); // Gumer Playstation module
+var gumerPSN = require('gumer-psn'); // Gumer Playstation module
 var express = require('express'); // Express
 var app = express(); // Express application instance
 var idregex = /[A-Za-z0-9].{2,15}/; // A simple regex for PSN id's // TODO: Make it more accurate and fancy
